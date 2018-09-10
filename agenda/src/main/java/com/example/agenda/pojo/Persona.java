@@ -1,4 +1,4 @@
-package pojo;
+package com.example.agenda.pojo;
 import java.sql.Date;
 
 import javax.persistence.Column;
