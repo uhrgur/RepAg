@@ -6,10 +6,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.example.agenda.service.IService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +27,7 @@ public class AppController {
 	
 	//private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-	@RequestMapping("/")
+	//@RequestMapping("/")
 	/*public ModelAndView handleRequest() throws Exception {
 		logger.info("-- en Listado");		
 		List<User> listUsers = userService.list();
@@ -33,7 +36,7 @@ public class AppController {
 		return model;
 	}*/	
 	
-	@RequestMapping(value = "/new", method = RequestMethod.GET)
+	//@RequestMapping(value = "/new", method = RequestMethod.GET)
 	/*public ModelAndView newUser() {
 		logger.info("-- en NEW");
 		ModelAndView model = new ModelAndView("UserForm");
@@ -41,7 +44,7 @@ public class AppController {
 		return model;		
 	}*/
 	
-	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	//@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	/*public ModelAndView editUser(HttpServletRequest request) {
 		logger.info("-- en EDIT");
 		int userId = Integer.parseInt(request.getParameter("id"));
@@ -51,15 +54,15 @@ public class AppController {
 		return model;		
 	}*/
 	
-	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	/*public ModelAndView deleteUser(HttpServletRequest request) {
-		logger.info("-- en DELETE");
+	@GetMapping("/delete")
+	public ModelAndView deleteUser(HttpServletRequest request) {
+		//logger.info("-- en DELETE");
 		int userId = Integer.parseInt(request.getParameter("id"));
-		userService.delete(userId);
+		//IService.delete(userId);
 		return new ModelAndView("redirect:/");		
-	}*/
+	}
 	
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	//@RequestMapping(value = "/save", method = RequestMethod.POST)
 	/*public ModelAndView saveUser(@ModelAttribute User user) {
 		logger.info("-- en SAVE");
 		userService.add(user);
