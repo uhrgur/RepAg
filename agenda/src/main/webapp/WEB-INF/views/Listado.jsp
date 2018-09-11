@@ -42,6 +42,7 @@
     <tbody>  
     <c:forEach items="${lista}" var="personas">
     <tr>
+    
     <td><input type="checkbox" class="checkthis" /></td>
     <td>${personas.nombre}</td>
     <td>${personas.apellido}</td>
