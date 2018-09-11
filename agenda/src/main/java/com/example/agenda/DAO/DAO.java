@@ -26,4 +26,6 @@ public class DAO implements CustomDao {
 	}
 
 
+	@PersistenceContext
+	EntityManager entityManager;
 }
