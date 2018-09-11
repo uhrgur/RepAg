@@ -1,4 +1,4 @@
-package pojo;
+package com.example.agenda.pojo;
 
 import java.sql.Date;
 
@@ -24,7 +24,6 @@ public class Empleado {
 	@GeneratedValue
 	@Column(name="idempleados")
 
-
 	public int getIdempleados() {
 		return idempleados;
 	}
@@ -33,6 +32,7 @@ public class Empleado {
 		this.idempleados = idempleados;
 	}
 
+	@Column(name="codEmpleados")
 	public String getCodEmpleados() {
 		return codEmpleados;
 	}
@@ -41,6 +41,7 @@ public class Empleado {
 		this.codEmpleados = codEmpleados;
 	}
 
+	@Column(name="salario")
 	public String getSalario() {
 		return salario;
 	}
@@ -49,6 +50,7 @@ public class Empleado {
 		this.salario = salario;
 	}
 
+	@Column(name="fechaAlta")
 	public Date getFechaAlta() {
 		return fechaAlta;
 	}
@@ -57,6 +59,7 @@ public class Empleado {
 		this.fechaAlta = fechaAlta;
 	}
 
+	@Column(name="idDepartamento")
 	public int getIdDepartamento() {
 		return idDepartamento;
 	}
@@ -65,6 +68,7 @@ public class Empleado {
 		this.idDepartamento = idDepartamento;
 	}
 
+	@Column(name="idCategoria")
 	public int getIdCategoria() {
 		return idCategoria;
 	}
