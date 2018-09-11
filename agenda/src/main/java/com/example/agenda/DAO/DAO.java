@@ -19,4 +19,10 @@ public class DAO implements CustomDao {
 	 @PersistenceContext
 	    EntityManager entityManager;
 
+	@Override
+	public List<Personas> getFirstNamesLike(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
