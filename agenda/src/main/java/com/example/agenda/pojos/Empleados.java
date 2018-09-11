@@ -1,5 +1,5 @@
 package com.example.agenda.pojos;
-// Generated 11-sep-2018 9:09:34 by Hibernate Tools 5.2.3.Final
+// Generated 11-sep-2018 12:39:55 by Hibernate Tools 5.2.3.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -30,7 +30,7 @@ public class Empleados implements java.io.Serializable {
 	private String codEmpleado;
 	private String salario;
 	private Date fechaAlta;
-	private Set<Personas> personases = new HashSet(0);
+	private Set<Personas> personases = new HashSet<Personas>(0);
 
 	public Empleados() {
 	}

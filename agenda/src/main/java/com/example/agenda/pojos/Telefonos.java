@@ -1,5 +1,5 @@
 package com.example.agenda.pojos;
-// Generated 11-sep-2018 9:09:34 by Hibernate Tools 5.2.3.Final
+// Generated 11-sep-2018 12:39:55 by Hibernate Tools 5.2.3.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
