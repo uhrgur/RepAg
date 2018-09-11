@@ -5,7 +5,7 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://10.90.36.13:3306/agenda</property>
+        <property name="hibernate.connection.url">jdbc:mysql://10.90.36.13:3306/agendaok</property>
         <property name="hibernate.connection.password">Vitu</property>
         <property name="hibernate.connection.username">Vitu</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>

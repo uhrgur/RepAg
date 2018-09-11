@@ -6,6 +6,13 @@ import com.example.agenda.pojos.Personas;
 
 public interface IService {
 
-	List<Personas> list();
+	public List<Personas> list();
 	
+	public Personas get(Integer id);
+	
+	public void update(Personas p);
+	
+	public void add(Personas p);
+	
+	public void delete(Personas p);
 }

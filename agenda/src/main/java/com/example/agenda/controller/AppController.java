@@ -33,7 +33,7 @@ public class AppController {
 		logger.info("-- en Listado");		
 		List<Personas> listUsers = iService.list();
 		ModelAndView model = new ModelAndView("UserList");
-		model.addObject("UserList", listUsers);
+		model.addObject("userList", listUsers);
 		return model;
 	}
 	
