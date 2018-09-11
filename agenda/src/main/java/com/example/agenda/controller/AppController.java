@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.agenda.pojos.Personas;
 import com.example.agenda.service.IService;
 
 import org.slf4j.Logger;
@@ -23,18 +24,18 @@ import org.slf4j.LoggerFactory;
 public class AppController {
 	
 	@Autowired
-	//private UserService userService;
+	private IService IService;
 	
 	//private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-	//@RequestMapping("/")
-	/*public ModelAndView handleRequest() throws Exception {
-		logger.info("-- en Listado");		
-		List<User> listUsers = userService.list();
+	@RequestMapping("/")
+	public ModelAndView handleRequest() throws Exception {
+		//logger.info("-- en Listado");		
+		List<Personas> listUsers = IService.list();
 		ModelAndView model = new ModelAndView("UserList");
 		model.addObject("userList", listUsers);
 		return model;
-	}*/	
+	}
 	
 	//@RequestMapping(value = "/new", method = RequestMethod.GET)
 	/*public ModelAndView newUser() {
