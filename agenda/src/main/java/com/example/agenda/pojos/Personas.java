@@ -31,8 +31,8 @@ public class Personas implements java.io.Serializable {
 	private String apellido2;
 	private String dni;
 	private Date fechaNacimiento;
-	private Set direccioneses = new HashSet(0);
-	private Set telefonoses = new HashSet(0);
+	private Set<Direcciones> direccioneses = new HashSet(0);
+	private Set<Telefonos> telefonoses = new HashSet(0);
 
 	public Personas() {
 	}
@@ -43,7 +43,7 @@ public class Personas implements java.io.Serializable {
 	}
 
 	public Personas(Empleados empleados, String nombre, String apellido1, String apellido2, String dni,
-			Date fechaNacimiento, Set direccioneses, Set telefonoses) {
+			Date fechaNacimiento, Set<Direcciones> direccioneses, Set<Telefonos> telefonoses) {
 		this.empleados = empleados;
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
@@ -123,20 +123,20 @@ public class Personas implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personas")
-	public Set getDireccioneses() {
+	public Set<Direcciones> getDireccioneses() {
 		return this.direccioneses;
 	}
 
-	public void setDireccioneses(Set direccioneses) {
+	public void setDireccioneses(Set<Direcciones> direccioneses) {
 		this.direccioneses = direccioneses;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personas")
-	public Set getTelefonoses() {
+	public Set<Telefonos> getTelefonoses() {
 		return this.telefonoses;
 	}
 
-	public void setTelefonoses(Set telefonoses) {
+	public void setTelefonoses(Set<Telefonos> telefonoses) {
 		this.telefonoses = telefonoses;
 	}
 

@@ -24,16 +24,16 @@ import org.slf4j.LoggerFactory;
 public class AppController {
 	
 	@Autowired
-	private IService IService;
+	private IService iService;
 	
-	//private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(AppController.class);
 
 	@RequestMapping("/")
 	public ModelAndView handleRequest() throws Exception {
-		//logger.info("-- en Listado");		
-		List<Personas> listUsers = IService.list();
+		logger.info("-- en Listado");		
+		List<Personas> listUsers = iService.list();
 		ModelAndView model = new ModelAndView("UserList");
-		model.addObject("userList", listUsers);
+		model.addObject("UserList", listUsers);
 		return model;
 	}
 	

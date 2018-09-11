@@ -22,7 +22,7 @@ public class Categorias implements java.io.Serializable {
 	private Integer idcategorias;
 	private String nombre;
 	private String descripcion;
-	private Set empleadoses = new HashSet(0);
+	private Set<Empleados> empleadoses = new HashSet(0);
 
 	public Categorias() {
 	}
@@ -31,7 +31,7 @@ public class Categorias implements java.io.Serializable {
 		this.nombre = nombre;
 	}
 
-	public Categorias(String nombre, String descripcion, Set empleadoses) {
+	public Categorias(String nombre, String descripcion, Set<Empleados> empleadoses) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.empleadoses = empleadoses;
@@ -68,11 +68,11 @@ public class Categorias implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categorias")
-	public Set getEmpleadoses() {
+	public Set<Empleados> getEmpleadoses() {
 		return this.empleadoses;
 	}
 
-	public void setEmpleadoses(Set empleadoses) {
+	public void setEmpleadoses(Set<Empleados> empleadoses) {
 		this.empleadoses = empleadoses;
 	}
 

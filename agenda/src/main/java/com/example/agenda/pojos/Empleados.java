@@ -30,7 +30,7 @@ public class Empleados implements java.io.Serializable {
 	private String codEmpleado;
 	private String salario;
 	private Date fechaAlta;
-	private Set personases = new HashSet(0);
+	private Set<Personas> personases = new HashSet(0);
 
 	public Empleados() {
 	}
@@ -40,7 +40,7 @@ public class Empleados implements java.io.Serializable {
 	}
 
 	public Empleados(Categorias categorias, Departamentos departamentos, String codEmpleado, String salario,
-			Date fechaAlta, Set personases) {
+			Date fechaAlta, Set<Personas> personases) {
 		this.categorias = categorias;
 		this.departamentos = departamentos;
 		this.codEmpleado = codEmpleado;
@@ -110,11 +110,11 @@ public class Empleados implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "empleados")
-	public Set getPersonases() {
+	public Set<Personas> getPersonases() {
 		return this.personases;
 	}
 
-	public void setPersonases(Set personases) {
+	public void setPersonases(Set<Personas> personases) {
 		this.personases = personases;
 	}
 
