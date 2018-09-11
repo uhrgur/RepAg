@@ -1,4 +1,4 @@
-package pojo;
+package com.example.agenda.pojo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
