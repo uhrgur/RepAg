@@ -25,7 +25,4 @@ public class DAO implements CustomDao {
 		return null;
 	}
 
-
-	@PersistenceContext
-	EntityManager entityManager;
 }
