@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.agenda.pojos.Personas;
@@ -24,12 +23,12 @@ public class AppController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(AppController.class);
 
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@RequestMapping("/")
 	public ModelAndView handleRequest() throws Exception {
-		logger.info("-- en Listado");
-		List<Personas> listP = iService.list();
-		ModelAndView model = new ModelAndView("Listado");
-		model.addObject("lista", listP);
+		logger.info("-- en Listado");		
+		List<Personas> listUsers = iService.list();
+		ModelAndView model = new ModelAndView("UserList");
+		model.addObject("userList", listUsers);
 		return model;
 	}
 	

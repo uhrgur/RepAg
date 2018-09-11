@@ -17,7 +17,7 @@
 </head>
 <body>
 	<div align="center">
-		<h1>LISTADO DE USUARIOS RepoLACERDA</h1>
+		<h1>LISTADO DE USUARIOS Repo</h1>
 		<h3>
 			<a href="new">Clic para crear un NUEVO USUARIO</a>
 		</h3>
@@ -29,9 +29,17 @@
 			<th>Email</th>
 			<th>Acciones</th>
 			</tr>
+
+			<c:forEach var="user" items="${userList}" varStatus="status">
 				<tr>
-					<td>QUEMARAVILLA</td>
+					<td>${status.index + 1}</td>
+					<td>${user.username}</td>
+					<td>${user.email}</td>
+					<td><a href="edit?id=${user.id}">Modificar</a>
+						&nbsp;&nbsp;&nbsp;&nbsp; <a href="delete?id=${user.id}">Eliminar</a>
+					</td>
 				</tr>
+			</c:forEach>
 		</table>
 	</div>
 </body>
