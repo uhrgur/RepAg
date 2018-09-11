@@ -2,11 +2,16 @@ package com.example.agenda.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.agenda.pojos.Personas;
 import com.example.agenda.DAO.IDAO;
 
+@Service
+@Transactional
 public class ServiceImpl implements IService{
 
 	@Autowired

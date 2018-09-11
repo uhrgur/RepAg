@@ -6,5 +6,5 @@ import com.example.agenda.pojos.Personas;
 
 
 	@Repository
-	public interface IDAO extends JpaRepository<Personas,Integer>, CustomDao{
+	public interface IDAO extends JpaRepository<Personas,Integer>{
 	}
