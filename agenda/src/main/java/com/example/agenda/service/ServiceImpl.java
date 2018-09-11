@@ -19,7 +19,7 @@ public class ServiceImpl implements IService{
 
 	@Override
 	public Personas get(Integer id) {
-		return personaDAO.findOne(id);
+		return personaDAO.findById(id).get();
 	}
 
 	@Override
