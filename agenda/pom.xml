@@ -78,13 +78,6 @@
         <!-- https://stackoverflow.com/questions/20602010/jsp-file-not-rendering-in-spring-boot-web-application/22552855 -->
 
 		<!-- Servlet -->
-
-		<dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
-            <!--<scope>provided</scope>-->
-        </dependency>
         
                 <!--  consigo hacer un F5 continuo -->
         <dependency>
