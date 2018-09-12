@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -59,11 +62,11 @@ public class AppController {
 		return new ModelAndView("redirect:/");		
 	}*/
 	
-	//@RequestMapping(value = "/save", method = RequestMethod.POST)
-	/*public ModelAndView saveUser(@ModelAttribute User user) {
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public ModelAndView saveUser(@ModelAttribute("persona") Personas persona) {
 		logger.info("-- en SAVE");
-		userService.add(user);
-		return new ModelAndView("redirect:/");
-	}*/
+		iService.add(persona);
+		return new ModelAndView("redirect:/list");
+	}
 	
 }
