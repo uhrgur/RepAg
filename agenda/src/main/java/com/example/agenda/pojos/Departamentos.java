@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
+
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -21,7 +25,7 @@ public class Departamentos implements java.io.Serializable {
 	
 	private Integer iddepartamento;
 	private String nombre;
-	private Empleados empleado;
+	private Set<Empleados> empleadoses = new HashSet<Empleados>(0);
 
 	public Departamentos() {
 	}
@@ -30,9 +34,9 @@ public class Departamentos implements java.io.Serializable {
 		this.nombre = nombre;
 	}
 
-	public Departamentos(String nombre, Empleados empleado) {
+	public Departamentos(String nombre, Set<Empleados> empleadoses) {
 		this.nombre = nombre;
-		this.empleado = empleado;
+		this.empleadoses = empleadoses;
 	}
 
 	@Id
@@ -57,12 +61,12 @@ public class Departamentos implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "departamentos")
-	public Empleados getEmpleados() {
-		return this.empleado;
+	public Set<Empleados> getEmpleadoses() {
+		return this.empleadoses;
 	}
 
-	public void setEmpleados(Empleados empleado) {
-		this.empleado = empleado;
+	public void setEmpleadoses(Set<Empleados> empleadoses) {
+		this.empleadoses = empleadoses;
 	}
 
 }
