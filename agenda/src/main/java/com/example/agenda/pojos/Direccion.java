@@ -9,6 +9,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -16,8 +17,10 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "direcciones", catalog = "agenda")
-public class Direcciones implements java.io.Serializable {
+public class Direccion implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private Integer iddirecciones;
 	private Personas personas;
 	private String direccion;
@@ -25,17 +28,17 @@ public class Direcciones implements java.io.Serializable {
 	private String localidad;
 	private String provincia;
 
-	public Direcciones() {
+	public Direccion() {
 	}
 
-	public Direcciones(String direccion, String codPostal, String localidad, String provincia) {
+	public Direccion(String direccion, String codPostal, String localidad, String provincia) {
 		this.direccion = direccion;
 		this.codPostal = codPostal;
 		this.localidad = localidad;
 		this.provincia = provincia;
 	}
 
-	public Direcciones(Personas personas, String direccion, String codPostal, String localidad, String provincia) {
+	public Direccion(Personas personas, String direccion, String codPostal, String localidad, String provincia) {
 		this.personas = personas;
 		this.direccion = direccion;
 		this.codPostal = codPostal;
@@ -47,15 +50,15 @@ public class Direcciones implements java.io.Serializable {
 	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "iddirecciones", unique = true, nullable = false)
-	public Integer getIddirecciones() {
+	public Integer getIddireccion() {
 		return this.iddirecciones;
 	}
 
-	public void setIddirecciones(Integer iddirecciones) {
+	public void setIddireccion(Integer iddirecciones) {
 		this.iddirecciones = iddirecciones;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idPersona")
 	public Personas getPersonas() {
 		return this.personas;

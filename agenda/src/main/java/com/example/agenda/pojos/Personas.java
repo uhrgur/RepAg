@@ -2,16 +2,12 @@ package com.example.agenda.pojos;
 // Generated 11-sep-2018 14:32:14 by Hibernate Tools 5.2.3.Final
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -33,7 +29,7 @@ public class Personas implements java.io.Serializable {
 	private String apellido2;
 	private String dni;
 	private Date fechaNacimiento;
-	//private Set<Direcciones> direccioneses = new HashSet<Direcciones>(0);
+	private Direccion direccion;
 	//private Set<Telefonos> telefonoses = new HashSet<Telefonos>(0);
 
 	public Personas() {
@@ -46,14 +42,14 @@ public class Personas implements java.io.Serializable {
 	}
 
 	public Personas(/*Empleados empleados, */String nombre, String apellido1, String apellido2, String dni,
-			Date fechaNacimiento/*, Set<Direcciones> direccioneses, Set<Telefonos> telefonoses*/) {
+			Date fechaNacimiento, Direccion direccion/*, Set<Telefonos> telefonoses*/) {
 		//this.empleados = empleados;
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
 		this.dni = dni;
 		this.fechaNacimiento = fechaNacimiento;
-		//this.direccioneses = direccioneses;
+		this.direccion = direccion;
 		//this.telefonoses = telefonoses;
 	}
 
@@ -125,14 +121,14 @@ public class Personas implements java.io.Serializable {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	/*@OneToMany(fetch = FetchType.LAZY, mappedBy = "personas")
-	public Set<Direcciones> getDireccioneses() {
-		return this.direccioneses;
-	}*/
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "personas")
+	public Direccion getDireccion() {
+		return this.direccion;
+	}
 
-	/*public void setDireccioneses(Set<Direcciones> direccioneses) {
-		this.direccioneses = direccioneses;
-	}*/
+	public void setDireccion(Direccion direccion) {
+		this.direccion = direccion;
+	}
 
 	/*@OneToMany(fetch = FetchType.LAZY, mappedBy = "personas")
 	public Set<Telefonos> getTelefonoses() {
