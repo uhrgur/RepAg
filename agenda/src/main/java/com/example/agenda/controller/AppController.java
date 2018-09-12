@@ -6,8 +6,14 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+<<<<<<< HEAD
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+=======
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+>>>>>>> 0e46a3795091fc373f5c90c1bcfe4a99d2bd88bf
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -115,12 +121,17 @@ public class AppController {
 		return model;
 	}*/
 	
+<<<<<<< HEAD
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public ModelAndView saveUser(@ModelAttribute("persona") Personas persona) {
+=======
 	
 	//@RequestMapping(value = "/save", method = RequestMethod.POST)
 	/*public ModelAndView saveUser(@ModelAttribute User user) {
+>>>>>>> 0e46a3795091fc373f5c90c1bcfe4a99d2bd88bf
 		logger.info("-- en SAVE");
-		userService.add(user);
-		return new ModelAndView("redirect:/");
-	}*/
+		iService.add(persona);
+		return new ModelAndView("redirect:/list");
+	}
 	
 }
