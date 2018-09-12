@@ -80,20 +80,6 @@
 
 					</table>
 
-					<div class="clearfix"></div>
-					<ul class="pagination pull-right">
-						<li class="disabled"><a href="#"><span
-								class="glyphicon glyphicon-chevron-left"></span></a></li>
-						<li class="active"><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#"><span
-								class="glyphicon glyphicon-chevron-right"></span></a></li>
-					</ul>
-
-				</div>
 
 			</div>
 		</div>
@@ -127,10 +113,11 @@
 
 					</div>
 				</div>
+				<!-- BOTON PARA MODIFICAR -->
 				<div class="modal-footer ">
 					<button type="button" class="btn btn-warning btn-lg"
 						style="width: 100%;">
-						<span class="glyphicon glyphicon-ok-sign"></span> Update
+						<span class="glyphicon glyphicon-ok-sign"></span> Modificar
 					</button>
 				</div>
 			</div>
@@ -138,9 +125,6 @@
 		</div>
 		<!-- /.modal-dialog -->
 	</div>
-
-
-
 	<div class="modal fade" id="delete" tabindex="-1" role="dialog"
 		aria-labelledby="edit" aria-hidden="true">
 		<div class="modal-dialog">
@@ -156,11 +140,11 @@
 				<div class="modal-body">
 
 					<div class="alert alert-danger">
-						<span class="glyphicon glyphicon-warning-sign"></span> Are you
-						sure you want to delete this Record?
+						<span class="glyphicon glyphicon-warning-sign"></span> ¿Estas seguro de que deseas borrar el contacto.?
 					</div>
 
 				</div>
+				<!-- Boton para confirmar que se borra el contacto  -->
 				<div class="modal-footer ">
 					<button type="button" class="btn btn-success">
 						<span class="glyphicon glyphicon-ok-sign"></span> Yes
