@@ -68,10 +68,10 @@
 											<div>
 												 
 												</form>
-												<form action="/list" method="POST">
+												<form action="/delete" method="POST">
 												
-													<input type = "hidden" name = "hola" value = "4"/>
-													<input type = "submit" name = "enviar"/>
+													<input type = "hidden" name = "hola" value = "${personas.idpersonas}"/>
+													<input type = "submit" name = "borrar"/>
 													
 					
 												</form>

@@ -63,11 +63,21 @@ public class AppController {
 		logger.info("-- en DELETE");
 		int userId = Integer.parseInt(request.getParameter("hola"));
 		logger.info("userId tiene el valor:" +userId);
-		//Personas p = new Personas();
-		//p.setIdpersonas(userId);
-		//iService.delete(p);
+		Personas p = new Personas();
+		p.setIdpersonas(userId);
+		iService.delete(p);
 		return new ModelAndView("redirect:/list");		
 	}
+	
+	/*@PostMapping("/delete")
+	public ModelAndView handleRequest2() throws Exception {
+		logger.info("-- en DELETE HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+		int userId = Integer.parseInt(request.getParameter("hola"));
+		//List<Personas> listP = iService.list(); 
+		ModelAndView model = new ModelAndView("Listado");
+		//model.addObject("lista", listP);
+		return model;
+	}*/
 	
 	
 	//@RequestMapping(value = "/save", method = RequestMethod.POST)
