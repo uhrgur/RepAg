@@ -18,6 +18,13 @@ import javax.persistence.Table;
 @Table(name = "telefonos", catalog = "agenda")
 public class Telefonos implements java.io.Serializable {
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(telefono);
+		return builder.toString();
+	}
+
 	private static final long serialVersionUID = 1L;
 	
 	private Integer idtelefonos;

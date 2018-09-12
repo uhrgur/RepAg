@@ -63,8 +63,15 @@ public class Direccion implements java.io.Serializable {
 		this.iddirecciones = iddirecciones;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(direccion);
+		return builder.toString();
+	}
+	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="idpersonas")
+	@JoinColumn(name="id_persona")
 	public Personas getPersonas() {
 		return this.personas;
 	}

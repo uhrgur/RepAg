@@ -28,15 +28,12 @@
 
 						<thead>
 
-							<th><input type="checkbox" id="checkall" /></th>
 							<th>Nombre</th>
 							<th>Apellidos</th>
 							<th>DNI</th>
 							<th>Dirección</th>
-							<th>Email</th>
 							<th>Teléfono</th>
 							<th>Fecha Nacimiento</th>
-							<th>Departamento</th>
 							<th>Editar</th>
 							<th>Borrar</th>
 
@@ -47,15 +44,12 @@
 						<tbody>
 							<c:forEach items="${lista}" var="personas">
 								<tr>
-									<td><input type="checkbox" class="checkthis" /></td>
 									<td>${personas.nombre}</td>
 									<td>${personas.apellido1}</td>
 									<td>${personas.dni}</td>
-									<td></td>
-									<td></td>
-									<td></td>
+									<td>${personas.direccion}</td>
+									<td>${personas.telefonoses}</td>
 									<td>${personas.fechaNacimiento}</td>
-									<td></td>
 									<td>
 										<p data-placement="top" data-toggle="tooltip"
 											title="Edit">
