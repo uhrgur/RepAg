@@ -2,12 +2,18 @@ package com.example.agenda.pojos;
 // Generated 11-sep-2018 14:32:14 by Hibernate Tools 5.2.3.Final
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -29,7 +35,7 @@ public class Personas implements java.io.Serializable {
 	private String apellido2;
 	private String dni;
 	private Date fechaNacimiento;
-	private Direccion direccion;
+	private Set<Direccion> direccion = new HashSet<Direccion>(0);
 	//private Set<Telefonos> telefonoses = new HashSet<Telefonos>(0);
 
 	public Personas() {
@@ -42,7 +48,7 @@ public class Personas implements java.io.Serializable {
 	}
 
 	public Personas(/*Empleados empleados, */String nombre, String apellido1, String apellido2, String dni,
-			Date fechaNacimiento, Direccion direccion/*, Set<Telefonos> telefonoses*/) {
+			Date fechaNacimiento, Set<Direccion> direccion/*, Set<Telefonos> telefonoses*/) {
 		//this.empleados = empleados;
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
@@ -121,12 +127,12 @@ public class Personas implements java.io.Serializable {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "personas")
-	public Direccion getDireccion() {
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="personas")
+	public Set<Direccion> getDireccion() {
 		return this.direccion;
 	}
 
-	public void setDireccion(Direccion direccion) {
+	public void setDireccion(Set<Direccion> direccion) {
 		this.direccion = direccion;
 	}
 

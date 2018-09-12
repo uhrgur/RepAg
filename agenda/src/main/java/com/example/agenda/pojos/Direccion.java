@@ -6,8 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
+
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -57,8 +63,8 @@ public class Direccion implements java.io.Serializable {
 		this.iddirecciones = iddirecciones;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idPersona")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="idpersonas")
 	public Personas getPersonas() {
 		return this.personas;
 	}
@@ -76,7 +82,7 @@ public class Direccion implements java.io.Serializable {
 		this.direccion = direccion;
 	}
 
-	@Column(name = "codPostal", nullable = false, length = 45)
+	@Column(name = "cod_postal", nullable = false, length = 45)
 	public String getCodPostal() {
 		return this.codPostal;
 	}

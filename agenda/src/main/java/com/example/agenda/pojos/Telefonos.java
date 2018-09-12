@@ -45,7 +45,7 @@ public class Telefonos implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idPersona")
+	@JoinColumn(name = "id_persona")
 	public Personas getPersonas() {
 		return this.personas;
 	}
