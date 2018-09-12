@@ -14,5 +14,5 @@ public interface IService {
 	
 	public void add(Personas p);
 	
-	public void delete(Personas p);
+	public void delete(Personas p) ;
 }
