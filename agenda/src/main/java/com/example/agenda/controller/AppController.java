@@ -39,6 +39,42 @@ public class AppController {
 		return model;
 	}
 	
+	@PostMapping("/edit")
+	public ModelAndView handleRequestEdit(HttpServletRequest request){
+		logger.info("-- en EDIT");
+		int userId = Integer.parseInt(request.getParameter("hola"));
+		logger.info("userId tiene el valor:" +userId);
+		Personas personita = iService.get(userId);
+		ModelAndView model = new ModelAndView("Editar");
+		model.addObject("p", personita);
+		return model;		
+	}
+	
+	@PostMapping("/commit")
+	public ModelAndView handleRequestCommit(HttpServletRequest request){
+		logger.info("-- en EDIT");
+		
+		String nombre = (String) request.getParameter("nombre");
+		String apellido1 = (String) request.getParameter("apellido");
+		String dni = (String) request.getParameter("dni");
+		Integer userId = Integer.parseInt(request.getParameter("hola"));
+		Personas nper = new Personas(userId, nombre, apellido1, dni);
+
+		logger.info("userId tiene el valor:" +userId);
+		iService.update(nper);
+		return new ModelAndView("redirect:/list");
+	}
+	
+	/*@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView handleRequest3() throws Exception {
+		logger.info("-- en Editar");
+		int userId = Integer.parseInt(request.getParameter("hola"));
+		Personas personita = iService.get(userId); 
+		ModelAndView model = new ModelAndView("Editar");
+		model.addObject("p", personita);
+		return model;
+	}*/
+	
 	//@RequestMapping(value = "/new", method = RequestMethod.GET)
 	/*public ModelAndView newUser() {
 		logger.info("-- en NEW");

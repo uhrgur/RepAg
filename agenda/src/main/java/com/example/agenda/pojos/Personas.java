@@ -45,6 +45,13 @@ public class Personas implements java.io.Serializable {
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
 	}
+	
+	public Personas(Integer idpersonas, String nombre, String apellido1, String dni){
+		this.idpersonas = idpersonas;
+		this.nombre = nombre;
+		this.apellido1 = apellido1;
+		this.dni = dni;
+	}
 
 	public Personas(Empleados empleados, String nombre, String apellido1, String apellido2, String dni,
 			Date fechaNacimiento, Set<Direccion> direccion, Set<Telefonos> telefonoses) {
