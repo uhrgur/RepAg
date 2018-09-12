@@ -66,8 +66,6 @@
 
 										<center>
 											<div>
-												 
-												</form>
 												<form action="/delete" method="POST">
 												
 													<input type = "hidden" name = "hola" value = "${personas.idpersonas}"/>
@@ -91,8 +89,9 @@
 						</tbody>
 
 					</table>
-
-
+					<form action="/new">
+						<input type="submit" class="btn btn-dark" value="Nuevo contacto">
+					</form>
 				</div>
 			</div>
 		</div>

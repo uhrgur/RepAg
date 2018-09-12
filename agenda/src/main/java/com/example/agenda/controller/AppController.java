@@ -6,14 +6,12 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-<<<<<<< HEAD
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-=======
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
->>>>>>> 0e46a3795091fc373f5c90c1bcfe4a99d2bd88bf
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +23,8 @@ import com.example.agenda.service.ServiceImpl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.example.agenda.pojos.Personas;
 
 
 
@@ -45,13 +45,13 @@ public class AppController {
 		return model;
 	}
 	
-	//@RequestMapping(value = "/new", method = RequestMethod.GET)
-	/*public ModelAndView newUser() {
+	@RequestMapping(value = "/new", method = RequestMethod.GET)
+	public ModelAndView newUser() {
 		logger.info("-- en NEW");
-		ModelAndView model = new ModelAndView("UserForm");
-		model.addObject("user", new User());
-		return model;		
-	}*/
+		ModelAndView model = new ModelAndView("AddContacto");
+		model.addObject("persona", new Personas());
+		return model;
+	}
 	
 	//@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	/*public ModelAndView editUser(HttpServletRequest request) {
@@ -85,14 +85,8 @@ public class AppController {
 		return model;
 	}*/
 	
-<<<<<<< HEAD
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ModelAndView saveUser(@ModelAttribute("persona") Personas persona) {
-=======
-	
-	//@RequestMapping(value = "/save", method = RequestMethod.POST)
-	/*public ModelAndView saveUser(@ModelAttribute User user) {
->>>>>>> 0e46a3795091fc373f5c90c1bcfe4a99d2bd88bf
+	public ModelAndView saveUser(@ModelAttribute Personas persona, BindingResult bindingResult, Model model) {
 		logger.info("-- en SAVE");
 		iService.add(persona);
 		return new ModelAndView("redirect:/list");

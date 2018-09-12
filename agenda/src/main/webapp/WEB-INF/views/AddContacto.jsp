@@ -159,16 +159,6 @@
 						
 					<span class="focus-input40"></span>
 				</div>
-				<div class="wrap-input100 validate-input"
-					data-validate="Email válido obligatorio: ex@abc.xyz">
-					<label class="label-input100" for="email">Email</label>
-					
-					<form:input path="email"
-						id="email" class="input100" type="text" name="email"
-						placeholder=""/>
-						
-					<span class="focus-input100"></span>
-				</div>
 
 				<div class="wrap-input100">
 					<div class="label-input100">Departamento</div>
@@ -226,42 +216,12 @@
 	<script src="resources/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<!--===============================================================================================-->
 	<script src="resources/vendor/select2/select2.min.js"></script>
-	<script>
-		$(".js-select2").each(function() {
-			$(this).select2({
-				minimumResultsForSearch : 20,
-				dropdownParent : $(this).next('.dropDownSelect2')
-			});
-		})
-		$(".js-select2").each(function() {
-			$(this).on('select2:open', function(e) {
-				$(this).parent().next().addClass('eff-focus-selection');
-			});
-		});
-		$(".js-select2").each(function() {
-			$(this).on('select2:close', function(e) {
-				$(this).parent().next().removeClass('eff-focus-selection');
-			});
-		});
-	</script>
+	
 	<!--===============================================================================================-->
 	<script src="resources/vendor/daterangepicker/moment.min.js"></script>
 	<script src="resources/vendor/daterangepicker/daterangepicker.js"></script>
 	<!--===============================================================================================-->
 	<script src="resources/vendor/countdowntime/countdowntime.js"></script>
 	<!--===============================================================================================-->
-	<script src="js/main.js"></script>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async
-		src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() {
-			dataLayer.push(arguments);
-		}
-		gtag('js', new Date());
-
-		gtag('config', 'UA-23581568-13');
-	</script>
 </body>
 </html>
