@@ -1,8 +1,6 @@
 package com.example.agenda.pojos;
 // Generated 12-sep-2018 12:10:41 by Hibernate Tools 5.2.3.Final
 
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,10 +17,12 @@ import javax.persistence.Table;
 @Table(name = "categorias", catalog = "agenda")
 public class Categorias implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private Integer idcategorias;
 	private String nombre;
 	private String descripcion;
-	private Set<Empleados> empleadoses = new HashSet<Empleados>(0);
+	private Empleados empleado;
 
 	public Categorias() {
 	}
@@ -31,10 +31,10 @@ public class Categorias implements java.io.Serializable {
 		this.nombre = nombre;
 	}
 
-	public Categorias(String nombre, String descripcion, Set<Empleados> empleadoses) {
+	public Categorias(String nombre, String descripcion, Empleados empleado) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.empleadoses = empleadoses;
+		this.empleado = empleado;
 	}
 
 	@Id
@@ -68,12 +68,12 @@ public class Categorias implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categorias")
-	public Set<Empleados> getEmpleadoses() {
-		return this.empleadoses;
+	public Empleados getEmpleado() {
+		return this.empleado;
 	}
 
-	public void setEmpleadoses(Set<Empleados> empleadoses) {
-		this.empleadoses = empleadoses;
+	public void setEmpleado(Empleados empleado) {
+		this.empleado = empleado;
 	}
 
 }
