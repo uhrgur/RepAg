@@ -26,69 +26,17 @@
 				<div class="table-responsive">
 
 
-					<table id="mytable" class="table table-bordred table-striped">
-
-						<thead>
-
-							<th>Nombre</th>
-							<th>Apellidos</th>
-							<th>DNI</th>
-							<th>Direcciï¿½n</th>
-							<th>Telï¿½fono</th>
-							<th>Fecha Nacimiento</th>
-							<th>Editar</th>
-							<th>Borrar</th>
-
-						</thead>
-
 						<!-- Contacto -->
+			<form action="/commit" method="POST">
+							
+									<input type="text" name="nombre" value="${p.nombre}">
+									<input type="text" name="apellido" value="${p.apellido1}">
+									<input type="text" name="dni" value="${p.dni}">
 
-						<tbody>
-							<c:forEach items="${lista}" var="personas">
-								<tr>
-									<td>${personas.nombre}</td>
-									<td>${personas.apellido1}</td>
-									<td>${personas.dni}</td>
-									<td>${personas.direccion}</td>
-									<td>${personas.telefonoses}</td>
-									<td>${personas.fechaNacimiento}</td>
-									<td>
-												<form action="/edit" method="POST">
-													<input type = "hidden" name = "hola" value = "${personas.idpersonas}"/>
-													<input type = "submit" name = "editar" value = "Editar"/>
-												</form>
-									</td>
+			<input type = "hidden" name = "hola" value = "${p.idpersonas}"/>
+			<input type = "submit" name = "borrar"/>
+							</form>
 
-									<td>
-
-
-
-										<center>
-											<div>
-
-												<form action="/delete" method="POST">
-													<input type = "hidden" name = "hola" value = "${personas.idpersonas}"/>
-													<input type = "submit" name = "borrar" value = "Borrar"/>
-												</form>
-												<!--  <p data-placement="top" data-toggle="tooltip"
-														title="Delete"></p>
-														<input type="submit" class="btn btn-dark" value="Borrar">
-												-->
-											</div>
-										</center>
-
-
-
-
-									</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-
-					</table>
-					<form action="/new">
-						<input type="submit" class="btn btn-dark" value="Nuevo contacto">
-					</form>
 				</div>
 			</div>
 		</div>
@@ -125,7 +73,7 @@
 					<div class="modal-footer ">
 						<button type="button" class="btn btn-warning btn-lg"
 							style="width: 100%;">
-							<span class="glyphicon glyphicon-ok-sign"></span>ï¿½Modificar
+							<span class="glyphicon glyphicon-ok-sign"></span> Modificar
 						</button>
 					</div>
 				</div>
@@ -148,7 +96,7 @@
 					<div class="modal-body">
 
 						<div class="alert alert-danger">
-							<span class="glyphicon glyphicon-warning-sign"></span> ï¿½Estas
+							<span class="glyphicon glyphicon-warning-sign"></span> ¿Estas
 							seguro de que deseas borrar el contacto.?
 						</div>
 
@@ -158,10 +106,10 @@
 					<div class="modal-footer ">
 						<button type="button" class="btn btn-success">
 
-							<span class="glyphicon glyphicon-ok-sign"></span>ï¿½Yes
+							<span class="glyphicon glyphicon-ok-sign"></span> Yes
 						</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal">
-							<span class="glyphicon glyphicon-remove"></span>ï¿½No
+							<span class="glyphicon glyphicon-remove"></span> No
 						</button>
 					</div>
 				</div>

@@ -30,21 +30,57 @@ import com.example.agenda.pojos.Personas;
 
 @Controller
 public class AppController {
-	
+
 	@Autowired
 	private IService iService;
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(AppController.class);
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView handleRequest() throws Exception {
 		logger.info("-- en Listado");
-		List<Personas> listP = iService.list(); 
+		List<Personas> listP = iService.list();
 		ModelAndView model = new ModelAndView("Listado");
 		model.addObject("lista", listP);
 		return model;
 	}
-	
+
+	@PostMapping("/edit")
+	public ModelAndView handleRequestEdit(HttpServletRequest request){
+		logger.info("-- en EDIT");
+		int userId = Integer.parseInt(request.getParameter("hola"));
+		logger.info("userId tiene el valor:" +userId);
+		Personas personita = iService.get(userId);
+		ModelAndView model = new ModelAndView("Editar");
+		model.addObject("p", personita);
+		return model;
+	}
+
+	@PostMapping("/commit")
+	public ModelAndView handleRequestCommit(HttpServletRequest request){
+		logger.info("-- en EDIT");
+
+		String nombre = (String) request.getParameter("nombre");
+		String apellido1 = (String) request.getParameter("apellido");
+		String dni = (String) request.getParameter("dni");
+		Integer userId = Integer.parseInt(request.getParameter("hola"));
+		Personas nper = new Personas(userId, nombre, apellido1, dni);
+
+		logger.info("userId tiene el valor:" +userId);
+		iService.update(nper);
+		return new ModelAndView("redirect:/list");
+	}
+
+	/*@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView handleRequest3() throws Exception {
+		logger.info("-- en Editar");
+		int userId = Integer.parseInt(request.getParameter("hola"));
+		Personas personita = iService.get(userId);
+		ModelAndView model = new ModelAndView("Editar");
+		model.addObject("p", personita);
+		return model;
+	}*/
+
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public ModelAndView newUser() {
 		logger.info("-- en NEW");
@@ -52,7 +88,7 @@ public class AppController {
 		model.addObject("persona", new Personas());
 		return model;
 	}
-	
+
 	//@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	/*public ModelAndView editUser(HttpServletRequest request) {
 		logger.info("-- en EDIT");
@@ -60,10 +96,10 @@ public class AppController {
 		User user = userService.get(userId);
 		ModelAndView model = new ModelAndView("UserForm");
 		model.addObject("user", user);
-		return model;		
+		return model;
 	}*/
-	
-	
+
+
 	@PostMapping("/delete")
 	public ModelAndView deleteUser(HttpServletRequest request){
 		logger.info("-- en DELETE");
@@ -72,24 +108,24 @@ public class AppController {
 		Personas p = new Personas();
 		p.setIdpersonas(userId);
 		iService.delete(p);
-		return new ModelAndView("redirect:/list");		
+		return new ModelAndView("redirect:/list");
 	}
-	
+
 	/*@PostMapping("/delete")
 	public ModelAndView handleRequest2() throws Exception {
 		logger.info("-- en DELETE HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
 		int userId = Integer.parseInt(request.getParameter("hola"));
-		//List<Personas> listP = iService.list(); 
+		//List<Personas> listP = iService.list();
 		ModelAndView model = new ModelAndView("Listado");
 		//model.addObject("lista", listP);
 		return model;
 	}*/
-	
+
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ModelAndView saveUser(@ModelAttribute Personas persona, BindingResult bindingResult, Model model) {
 		logger.info("-- en SAVE");
 		iService.add(persona);
 		return new ModelAndView("redirect:/list");
 	}
-	
+
 }
