@@ -2,14 +2,20 @@ package com.example.agenda.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.agenda.pojos.Personas;
 import com.example.agenda.service.IService;
+import com.example.agenda.service.ServiceImpl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +33,7 @@ public class AppController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView handleRequest() throws Exception {
 		logger.info("-- en Listado");
-		List<Personas> listP = iService.list();
+		List<Personas> listP = iService.list(); 
 		ModelAndView model = new ModelAndView("Listado");
 		model.addObject("lista", listP);
 		return model;
@@ -51,13 +57,18 @@ public class AppController {
 		return model;		
 	}*/
 	
-	/*@GetMapping("/delete")
-	public ModelAndView deleteUser(HttpServletRequest request) {
-		//logger.info("-- en DELETE");
-		int userId = Integer.parseInt(request.getParameter("id"));
-		//IService.delete(userId);
-		return new ModelAndView("redirect:/");		
-	}*/
+	
+	@PostMapping("/delete")
+	public ModelAndView deleteUser(HttpServletRequest request){
+		logger.info("-- en DELETE");
+		int userId = Integer.parseInt(request.getParameter("hola"));
+		logger.info("userId tiene el valor:" +userId);
+		//Personas p = new Personas();
+		//p.setIdpersonas(userId);
+		//iService.delete(p);
+		return new ModelAndView("redirect:/list");		
+	}
+	
 	
 	//@RequestMapping(value = "/save", method = RequestMethod.POST)
 	/*public ModelAndView saveUser(@ModelAttribute User user) {
