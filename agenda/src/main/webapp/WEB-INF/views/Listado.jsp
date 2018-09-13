@@ -33,8 +33,8 @@
 							<th>Nombre</th>
 							<th>Apellidos</th>
 							<th>DNI</th>
-							<th>Direcciï¿½n</th>
-							<th>Telï¿½fono</th>
+							<th>Dirección</th>
+							<th>Teléfono</th>
 							<th>Fecha Nacimiento</th>
 							<th>Editar</th>
 							<th>Borrar</th>
@@ -55,7 +55,7 @@
 									<td>
 												<form action="/edit" method="POST">
 													<input type = "hidden" name = "hola" value = "${personas.idpersonas}"/>
-													<input type = "submit" name = "editar" value = "Editar"/>
+													<input type = "submit" class="btn btn-dark" style="background-color:#2021BF; color:#DDD;" name = "editar" value = "Editar"/>
 												</form>
 									</td>
 
@@ -68,7 +68,7 @@
 
 												<form action="/delete" method="POST">
 													<input type = "hidden" name = "hola" value = "${personas.idpersonas}"/>
-													<input type = "submit" name = "borrar" value = "Borrar"/>
+													<input type = "submit" class="btn btn-dark" style="background-color:#992131; color:#DDD;" name = "borrar" value = "Borrar"/>
 												</form>
 												<!--  <p data-placement="top" data-toggle="tooltip"
 														title="Delete"></p>
