@@ -4,22 +4,18 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.example.agenda.pojos.Personas;
 import com.example.agenda.pojos.Telefonos;
 import com.example.agenda.pojos.Direccion;
@@ -27,7 +23,6 @@ import com.example.agenda.pojos.PersonaDirTel;
 import com.example.agenda.service.DireccionService;
 import com.example.agenda.service.IService;
 import com.example.agenda.service.TelefonoService;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,18 +40,21 @@ public class AppController {
 
 	private static final Logger logger = LoggerFactory.getLogger(AppController.class);
 
-	@InitBinder("persona")
-    public void initBinder(WebDataBinder binder) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        sdf.setLenient(false);
-        binder.registerCustomEditor(Date.class, "fechaNacimiento", new CustomDateEditor(sdf, true));
-    }
-	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView handleRequest() throws Exception {
 		logger.info("-- en Listado");
 		List<Personas> listP = iService.list();
 		ModelAndView model = new ModelAndView("Listado");
+		model.addObject("lista", listP);
+		return model;
+	}
+
+	@RequestMapping(value = "/find", method = RequestMethod.POST)
+	public ModelAndView handleRequestFind(HttpServletRequest request) throws Exception {
+		logger.info("-- en Buscar");
+		String nombre = request.getParameter("nombre");
+		List<Personas> listP = iService.getPersona(nombre);
+		ModelAndView model = new ModelAndView("ListaFind");
 		model.addObject("lista", listP);
 		return model;
 	}
@@ -140,7 +138,7 @@ public class AppController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ModelAndView saveUser(@ModelAttribute("personadirtel") PersonaDirTel personadirtel, BindingResult bindingResult, Model model) {
 		logger.info("-- en SAVE");
-		
+
 		Personas p = new Personas();
 		p.setNombre(personadirtel.getNombre());
 		p.setApellido1(personadirtel.getApellido1());
@@ -153,22 +151,22 @@ public class AppController {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
+
 		Telefonos t = new Telefonos();
 		t.setPersonas(p);
 		t.setTelefono(personadirtel.getTelefono());
-		
+
 		Direccion d = new Direccion();
 		d.setPersonas(p);
 		d.setCodPostal(personadirtel.getCodPostal());
 		d.setDireccion(personadirtel.getDireccion());
 		d.setLocalidad(personadirtel.getLocalidad());
 		d.setProvincia(personadirtel.getProvincia());
-		
+
 		iService.add(p);
 		telefonoService.add(t);
 		direccionService.add(d);
-		
+
 		return new ModelAndView("redirect:/list");
 	}
 
