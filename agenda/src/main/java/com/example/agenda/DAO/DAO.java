@@ -16,10 +16,11 @@ public class DAO implements CustomDao {
 	 @PersistenceContext
 	    EntityManager entityManager;
 
-	@Override
+	/*@Override
 	public List<Personas> find(String nombre) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		Query query = entityManager.createNativeQuery("SELECT * FROM personas p WHERE p.nombre LIKE ?", Personas.class);
+		query.setParamater(1, nombre+"%");
+		return query.getReturnList();
+	}*/
 
 }

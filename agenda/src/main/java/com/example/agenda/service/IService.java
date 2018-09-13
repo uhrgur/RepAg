@@ -16,5 +16,5 @@ public interface IService {
 	
 	public void delete(Personas p) ;
 	
-	public List<Personas> getPersona(String nombre);
+	//public List<Personas> getPersona(String nombre);
 }

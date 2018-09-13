@@ -49,7 +49,7 @@ public class AppController {
 		return model;
 	}
 
-	@RequestMapping(value = "/find", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/find", method = RequestMethod.POST)
 	public ModelAndView handleRequestFind(HttpServletRequest request) throws Exception {
 		logger.info("-- en Buscar");
 		String nombre = request.getParameter("nombre");
@@ -57,7 +57,7 @@ public class AppController {
 		ModelAndView model = new ModelAndView("ListaFind");
 		model.addObject("lista", listP);
 		return model;
-	}
+	}*/
 
 	@PostMapping("/edit")
 	public ModelAndView handleRequestEdit(HttpServletRequest request){
