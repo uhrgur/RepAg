@@ -1,30 +1,35 @@
 package com.example.agenda.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.agenda.pojos.Personas;
+import com.example.agenda.pojos.Telefonos;
+import com.example.agenda.pojos.Direccion;
+import com.example.agenda.pojos.PersonaDirTel;
+import com.example.agenda.service.DireccionService;
 import com.example.agenda.service.IService;
-import com.example.agenda.service.ServiceImpl;
+import com.example.agenda.service.TelefonoService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.example.agenda.pojos.Personas;
 
 
 
@@ -33,9 +38,20 @@ public class AppController {
 
 	@Autowired
 	private IService iService;
+	@Autowired
+	private TelefonoService telefonoService;
+	@Autowired
+	private DireccionService direccionService;
 
 	private static final Logger logger = LoggerFactory.getLogger(AppController.class);
 
+	@InitBinder("persona")
+    public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf.setLenient(false);
+        binder.registerCustomEditor(Date.class, "fechaNacimiento", new CustomDateEditor(sdf, true));
+    }
+	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView handleRequest() throws Exception {
 		logger.info("-- en Listado");
@@ -50,7 +66,7 @@ public class AppController {
 		logger.info("-- en EDIT");
 		int userId = Integer.parseInt(request.getParameter("hola"));
 		logger.info("userId tiene el valor:" +userId);
-		Personas personita = iService.get(userId);
+		Personas personita = (Personas)iService.get(userId);
 		ModelAndView model = new ModelAndView("Editar");
 		model.addObject("p", personita);
 		return model;
@@ -85,7 +101,7 @@ public class AppController {
 	public ModelAndView newUser() {
 		logger.info("-- en NEW");
 		ModelAndView model = new ModelAndView("AddContacto");
-		model.addObject("persona", new Personas());
+		model.addObject("personadirtel", new PersonaDirTel());
 		return model;
 	}
 
@@ -122,9 +138,37 @@ public class AppController {
 	}*/
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ModelAndView saveUser(@ModelAttribute Personas persona, BindingResult bindingResult, Model model) {
+	public ModelAndView saveUser(@ModelAttribute("personadirtel") PersonaDirTel personadirtel, BindingResult bindingResult, Model model) {
 		logger.info("-- en SAVE");
-		iService.add(persona);
+		
+		Personas p = new Personas();
+		p.setNombre(personadirtel.getNombre());
+		p.setApellido1(personadirtel.getApellido1());
+		p.setApellido2(personadirtel.getApellido2());
+		p.setDni(personadirtel.getDni());
+		// FORMATEO DE FECHA
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			p.setFechaNacimiento(format.parse(personadirtel.getFechaNacimiento()));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		Telefonos t = new Telefonos();
+		t.setPersonas(p);
+		t.setTelefono(personadirtel.getTelefono());
+		
+		Direccion d = new Direccion();
+		d.setPersonas(p);
+		d.setCodPostal(personadirtel.getCodPostal());
+		d.setDireccion(personadirtel.getDireccion());
+		d.setLocalidad(personadirtel.getLocalidad());
+		d.setProvincia(personadirtel.getProvincia());
+		
+		iService.add(p);
+		telefonoService.add(t);
+		direccionService.add(d);
+		
 		return new ModelAndView("redirect:/list");
 	}
 
