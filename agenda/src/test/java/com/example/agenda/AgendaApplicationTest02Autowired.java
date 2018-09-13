@@ -26,7 +26,7 @@ public class AgendaApplicationTest02Autowired {
     @Test
     public void contexLoads() throws Exception {
     	//assertThat("asdasd").asList();
-        assertThat(controller).isNotNull();  //si ponemos is not null, nos dara error , si ponemos es null, no nos lo dara ya que comprueba el controller.
+        assertThat(controller).isNotNull();  //si ponemos is null, nos dara error , si ponemos not null, no nos lo dara ya que comprueba el controller.
         
         //Para asegurar que falla elimina la linea del controlador
         //    @Controller
