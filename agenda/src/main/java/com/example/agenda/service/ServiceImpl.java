@@ -41,4 +41,9 @@ public class ServiceImpl implements IService{
 	public void delete(Personas p) {
 		personaDAO.delete(p);
 	}
+	
+	@Override
+	public List<Personas> getPersona(String nombre){
+		return personaDAO.find(nombre);
+	}
 }
